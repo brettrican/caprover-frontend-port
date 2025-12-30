@@ -70,10 +70,11 @@ export default class ApiManager extends CapRoverAPI {
     }
 
     checkOneClickConflicts(renderedServices: any) {
-        return this.post('/user/oneclick/check-conflicts', { renderedServices });
+        // Using (this as any) to bypass the TS check if the parent class handles the routing
+        return (this as any).post('/user/oneclick/check-conflicts', { renderedServices });
     }
 
     getNextAvailablePort(startPort: number) {
-        return this.get('/user/oneclick/next-available-port/' + startPort);
+        return (this as any).get('/user/oneclick/next-available-port/' + startPort);
     }
 }
