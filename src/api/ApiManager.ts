@@ -68,4 +68,12 @@ export default class ApiManager extends CapRoverAPI {
                 return Promise.reject(error)
             })
     }
+
+    checkOneClickConflicts(renderedServices: any) {
+        return this.post('/user/oneclick/check-conflicts', { renderedServices });
+    }
+
+    getNextAvailablePort(startPort: number) {
+        return this.get('/user/oneclick/next-available-port/' + startPort);
+    }
 }
